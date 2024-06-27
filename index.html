@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/df054ad21d.js" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js"></script>
+
+</head>
+<body>
+    <div id="container">
+        <h1>Resume Builder</h1>
+        <p>Created by Harsh Ruhela &copy; 2024</p>
+        <div id="inner-container">
+            <div id="PersonalInfo" class="outer-class">
+                <h1>Personal Details</h1>
+                <form id="PersonalInfoForm" class="inner-class">
+                    <input type="text" id="name" class="format" placeholder="*Enter Your Name:" required>
+                    <input type="tel" id="mobile" class="format" placeholder="*Contact Number:" required>
+                    <input type="email" id="email" class="format" placeholder="*Email Id:" required>
+                    <input type="url" id="Linkedin" class="format" placeholder="Linkedin Profile:">
+                    <input type="url" id="Github" class="format" placeholder="Github Profile:">
+                </form>
+            </div>
+            
+            <div id="Internship" class="outer-class overflow-control">
+                <div class="info-class">
+                    <h1>Internships</h1>
+                    <button class="add-btn" onclick="add(1)">Add</button>
+                </div>
+
+                <div >
+                    <div class="info-class">
+                        <h3>Internship 1</h3>
+                    </div>
+                    <form  class="inner-class">
+                        <input type="text" id="CompanyName1" class="format" placeholder="*Organisation name:" required>
+                        <input type="text" id="Designation1" class="format" placeholder="*Designation:" required>
+                        <input type="text" id="InternStartDate1" class="format" placeholder="*Start Date" required>
+                        <input type="text" id="InternEndDate1" class="format" placeholder="*End Date" required>
+                        <textarea name="" id="InternshipDetail1" class="format" placeholder="*Work Done ( Start your points with ~ )" required></textarea>  
+                    </form>
+                </div>
+            </div>
+
+            <div id="Projects" class="outer-class overflow-control">
+                <div class="info-class">
+                    <h1>Projects</h1>
+                    <button class="add-btn" onclick="add(2)">Add</button>
+                </div>
+
+                <div>
+                    <div class="info-class">
+                        <h3>Project 1</h3>
+                    </div>
+                    <form class="inner-class">
+                        <input type="text" id="ProjectName1" class="format" placeholder="*Project name:" required>
+                        <input type="text" id="Technology1" class="format" placeholder="*Technologies Used:"  required>
+                        <input type="text" id="ProjectStartDate1" class="format" placeholder="*Start Date"  required>
+                        <input type="text" id="ProjectEndDate1" class="format"  placeholder="*End Date" required>
+                        <textarea name="" id="Explanation1" class="format" placeholder="*Explanation ( Start your points with ~ )"  required></textarea>
+                    </form>
+                </div>
+            </div>
+          
+            <div id="combined" class="outer-class overflow-control ">
+                <div id="Certifications">
+                    <div class="info-class">
+                        <h1>Certifications</h1>
+                        <button class="add-btn" onclick="add(3)">Add</button>
+                    </div>
+                    <div>
+                        <div class="info-class">
+                            <h3>Certificate 1</h3>
+                        </div>
+                        <form  class="inner-class">
+                            <input type="text" id="CertificationName1" class="format" placeholder="*Certification name:" required>
+                            <input type="text" id="CertificationDate1" class="format" placeholder="*Date" required>
+                            <input type="url" id="CertificationUrl1" class="format" placeholder="Link">
+                        </form>
+                    </div>
+                </div>
+
+                <div id="Skills">
+                    <div class="info-class">
+                        <h1>Technical Skills</h1>
+                    </div>
+                    <form class="inner-class">
+                        <textarea style="padding: 0.5rem;" name="" id="UserSkill" placeholder="Enter yous skills:"></textarea>
+                    </form>
+                </div>
+            </div>
+
+            <div id="Education" class="outer-class overflow-control ">
+                <div class="info-class">
+                    <h1>Education</h1>
+                    <button class="add-btn" onclick="add(4)">Add</button>
+                </div>
+                <div>
+                    <div>
+                        <h3>Education1</h3>
+                    </div>
+                    <form class="inner-class">
+                        <input type="text" id="Degree1" placeholder="*Education Level" class="format" required>
+                        <input type="text" id="Organisation1" placeholder="*Organisation name" class="format" required>
+                        <input type="text" id="PassingDate1" class="format" placeholder="*Date" required>
+                        <input type="number" id="score1" placeholder="Result" class="format">
+                    </form>
+                </div>
+            </div>
+
+            <div id="Achievements" class="outer-class overflow-control ">
+                <div class="info-class">
+                    <h1>Achievements</h1>
+                    <button class="add-btn" onclick="add(5)">Add</button>
+                </div>
+                <div>
+                    <div>
+                        <h3>Achievement1</h3>
+                    </div>
+                    <form class="inner-class">
+                        <input type="text" id="title1" placeholder="*Title" class="format" required>
+                    </form>
+                </div>
+            </div>    
+
+        </div>
+        <button onclick="Submit()" id="submit">Submit</button>
+    </div>
+    
+    <div id="Preview-container" style="display: none;">
+        <div id="Preview">
+            <div id="PersonalArea">
+            </div>
+            
+            <div id="EducationWrapper">
+                <h4>Education</h4>
+                <hr>
+                <div id="EducationArea">
+                </div>
+            </div>
+            
+            <div id="InternshipWrapper">
+                <h4>Internship</h4>
+                <hr>
+                <div id="InternshipArea">
+                </div>
+            </div>
+            
+            <div id="ProjectsWrapper">
+                <h4>Projects</h4>
+                <hr>
+                <div id="ProjectsArea">
+                </div>
+            </div>
+            
+            <div id="SkillsWrapper">
+                <h4>Technical Skills</h4>
+                <hr>
+                <div id="SkillsArea">
+                </div>
+            </div>
+            
+            <div id="CertificationWrapper">
+                <h4>Certifications</h4>
+                <hr>
+                <div id="CertificationsArea">
+                </div>
+            </div>
+            
+            
+            <div id="AchievementsWrapper">
+                <h4>Achievements</h4>
+                <hr>
+                <div id="AchievementArea">
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <div id="btns">
+        <button id="pre" onclick="Prev()">Go Back</button>
+        <button onclick="download()" id="download">Download</button>
+    </div>
+
+</body>
+</html>
